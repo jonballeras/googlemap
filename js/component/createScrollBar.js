@@ -42,7 +42,7 @@ async function createScrollBar(target,staticImgUrl) {
             if(!imgLoaded && propOnView) {
                 const id = propItem[i].getAttribute("id")
                 const imgData = await getBigImgdata(id,staticImgUrl)
-                const imgWrap = propList[i].querySelector(".img-wrap img")
+                const imgWrap = propItem[i].querySelector(".img-wrap img")
                 imgWrap.setAttribute("src", imgData)
                 propItem[i].setAttribute("img", true)
             }
