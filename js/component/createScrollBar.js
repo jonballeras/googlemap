@@ -35,7 +35,7 @@ async function createScrollBar(target,staticImgUrl) {
     scrollbarWraper.appendChild(scrollbar)
     propertiesWraper.addEventListener("scroll", async function() {
         scrollbar.value = this.scrollTop;
-        const propItem = propertiesWraper.querySelector(".prop-list-wrap")
+        const propItem = propertiesWraper.querySelectorAll(".prop-list-wrap")
         for(let i = 0; i < propItem.length; i++ ) {
             const propOnView = isInViewport(propItem[i]);
             const imgLoaded = propItem[i].getAttribute("img")
@@ -44,6 +44,7 @@ async function createScrollBar(target,staticImgUrl) {
                 const imgData = await getBigImgdata(id,staticImgUrl)
                 const imgWrap = propList[i].querySelector(".img-wrap img")
                 imgWrap.setAttribute("src", imgData)
+                propItem[i].setAttribute("img", true)
             }
         }
     });

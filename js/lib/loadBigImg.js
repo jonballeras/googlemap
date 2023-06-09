@@ -9,5 +9,6 @@ export async function loadBigImg() {
         const imgData = await getBigImgdata(id,staticImgUrl)
         const imgWrap = propList[i].querySelector(".img-wrap img")
         imgWrap.setAttribute("src", imgData)
+        propList[i].setAttribute("img", true)
     }
 }
