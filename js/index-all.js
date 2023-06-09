@@ -344,7 +344,6 @@ async function initData(data) {
         let imgListInfo = markerData.img ? 'data:image/png;base64, ' + markerData.img : staticImgUrl+'no-image.png'
 
         if( i <= 9 ) {
-          console.log(id)
             imgListInfo = await getBigImgdata(id,staticImgUrl)
          }
         const propertyType = markerData.type == "TH" ? "Townhouse" : "Single Family Residence"

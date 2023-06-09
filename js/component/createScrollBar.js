@@ -1,4 +1,4 @@
-import { getBigImgdata } from "../lib/getBigImgdata.js"
+import { getBigImgdata } from "../lib/getBigImgData";
 
 function isInViewport(el) {
     const rect = el.getBoundingClientRect();
@@ -35,14 +35,15 @@ function createScrollBar(target,staticImgUrl) {
     scrollbarWraper.appendChild(scrollbar)
     propertiesWraper.addEventListener("scroll", function() {
         scrollbar.value = this.scrollTop;
-
-        for(i=0; i < propertiesWraper.length; i++ ) {
-            const propOnView = isInViewport(propertiesWraper[i]);
-            const imgLoaded = propertiesWraper[i].getAttribute("img")
+        const propItem = propertiesWraper.querySelector(".prop-list-wrap")
+        for(let i = 0; i < propItem.length; i++ ) {
+            const propOnView = isInViewport(propItem[i]);
+            const imgLoaded = propItem[i].getAttribute("img")
             if(!imgLoaded && propOnView) {
-              const id = propertiesWraper[i].getAttribute("id")
-              getBigImgdata(id, staticImgUrl)
-              propertiesWraper[i].setAttribute("img",true);
+                const id = propItem[i].getAttribute("id")
+                const imgData = getBigImgdata(id,staticImgUrl)
+                const imgWrap = propList[i].querySelector(".img-wrap img")
+                imgWrap.setAttribute("src", imgData)
             }
         }
     });
