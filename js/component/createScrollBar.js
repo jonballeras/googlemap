@@ -11,7 +11,7 @@ function isInViewport(el) {
     );
   }
 
-function createScrollBar(target,staticImgUrl) {
+async function createScrollBar(target,staticImgUrl) {
     const scrollbarWraper = document.querySelector(".scroll-fake");
     const propertiesWraper = document.querySelector(".info");
     const filterElement = propertiesWraper.querySelector(".filter--wrapper");
@@ -33,7 +33,7 @@ function createScrollBar(target,staticImgUrl) {
     })
 
     scrollbarWraper.appendChild(scrollbar)
-    propertiesWraper.addEventListener("scroll", function() {
+    propertiesWraper.addEventListener("scroll", async function() {
         scrollbar.value = this.scrollTop;
         const propItem = propertiesWraper.querySelector(".prop-list-wrap")
         for(let i = 0; i < propItem.length; i++ ) {
@@ -41,7 +41,7 @@ function createScrollBar(target,staticImgUrl) {
             const imgLoaded = propItem[i].getAttribute("img")
             if(!imgLoaded && propOnView) {
                 const id = propItem[i].getAttribute("id")
-                const imgData = getBigImgdata(id,staticImgUrl)
+                const imgData = await getBigImgdata(id,staticImgUrl)
                 const imgWrap = propList[i].querySelector(".img-wrap img")
                 imgWrap.setAttribute("src", imgData)
             }
