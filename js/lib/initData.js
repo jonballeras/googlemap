@@ -110,7 +110,7 @@ function initData( data, map ) {
     const resetField = document.querySelectorAll(".reset-wrap")
 
     // Filter properties based on map
-    mapBoundFilter(propList, map, splitMarkerZoom);
+    mapBoundFilter(propList, map, splitMarkerZoom, markers);
 
     // Reset filter
     if(resetField) {
