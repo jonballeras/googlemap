@@ -1,4 +1,4 @@
-import { getBigImgdata } from "./getBigImgData";
+import { getBigImgdata } from "./getBigImgData.js";
 
 export function loadBigImg() {
     const propList = document.querySelectorAll('.prop-list-wrap');

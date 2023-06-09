@@ -1,4 +1,4 @@
-import { getBigImgdata } from "../lib/getBigImgData";
+import { getBigImgdata } from "../lib/getBigImgData.js";
 
 function isInViewport(el) {
     const rect = el.getBoundingClientRect();
