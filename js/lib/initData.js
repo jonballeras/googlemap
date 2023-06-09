@@ -94,7 +94,12 @@ function initData( data, map ) {
     targetFilterCity?.appendChild(select);
   
     // Add Neighborhood marker
-    addNeighborhoodMarker( neighborhoodList, neighborhoodMarkers, staticImgUrl, map )
+    addNeighborhoodMarker( 
+        neighborhoodList, 
+        neighborhoodMarkers, 
+        staticImgUrl, 
+        map 
+    )
     
     // ZOOM Fit to markers
     zoomFitMarkers(map);
@@ -110,7 +115,13 @@ function initData( data, map ) {
     const resetField = document.querySelectorAll(".reset-wrap")
 
     // Filter properties based on map
-    mapBoundFilter(propList, map, splitMarkerZoom, markers);
+    mapBoundFilter(
+        propList, 
+        map, 
+        splitMarkerZoom, 
+        markers, 
+        neighborhoodMarkers
+    );
 
     // Reset filter
     if(resetField) {
