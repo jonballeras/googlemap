@@ -1,5 +1,7 @@
 // add single marker
-function addMarker( markerData, infoWindow, staticImgUrl, markers, map, i ) {
+import { getBigImgdata } from "../lib/getBigImgData.js";
+
+async function addMarker( markerData, infoWindow, staticImgUrl, markers, map, i ) {
     const marker = new google.maps.Marker({
       position: markerData.position,
       map,
@@ -38,14 +40,14 @@ function addMarker( markerData, infoWindow, staticImgUrl, markers, map, i ) {
       "</div>" +
       "</div>";
   
-      marker.addListener("click", () => {
+      marker.addListener("click", async () => {
         if(window.innerWidth <= 600) {
           const detailElm = document.querySelector(".detail-property"),
                 bathElm = detailElm.querySelector(".bathrooms"),
                 bedElm = detailElm.querySelector(".bedrooms"),
                 sqftElm = detailElm.querySelector(".sqfeet"),
                 imgElement = detailElm.querySelector('.mbl-img-list-pop'),
-                imgList = marker.room.img ? 'data:image/png;base64, ' + marker.room.img : staticImgUrl+'no-image.png';
+                imgList = await getBigImgdata(markerData.id, staticImgUrl)
 
                 detailElm.setAttribute("index", i)
                 bathElm.textContent = marker.room.bathrooms;
